@@ -11,7 +11,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = "true"
   enable_dns_support   = "true"
   tags = {
-    Name = "${var.ENVIRONMENT}-vpc"
+    Name = "${var.env}-vpc"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "subnet_a" {
   availability_zone = "${var.region}a"
   map_public_ip_on_launch = "true"
   tags = {
-    Name = "${var.ENVIRONMENT}-subnet-a"
+    Name = "${var.env}-subnet-a"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_subnet" "subnet_b" {
   availability_zone = "${var.region}b"
   map_public_ip_on_launch = "false"
   tags = {
-    Name = "${var.ENVIRONMENT}-subnet-b"
+    Name = "${var.env}-subnet-b"
   }
 }
 
@@ -44,7 +44,7 @@ resource "aws_subnet" "subnet_c" {
   availability_zone = "${var.region}b"
   map_public_ip_on_launch = "true"
   tags = {
-    Name = "${var.ENVIRONMENT}-subnet-c"
+    Name = "${var.env}-subnet-c"
   }
 }
 
@@ -89,7 +89,7 @@ resource "aws_nat_gateway" "ngw" {
   subnet_id     = aws_subnet.subnet_a.id
   depends_on = [aws_internet_gateway.igw]
   tags = {
-    Name = "${var.ENVIRONMENT}-vpc-NAT-gateway"
+    Name = "${var.env}-vpc-NAT-gateway"
   }
 }
 
@@ -109,7 +109,7 @@ resource "aws_route_table" "private" {
   }
 
   tags = {
-    Name = "${var.ENVIRONMENT}-private-route-table"
+    Name = "${var.env}-private-route-table"
   }
 }
 

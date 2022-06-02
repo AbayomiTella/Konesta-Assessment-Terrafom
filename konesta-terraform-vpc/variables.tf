@@ -27,8 +27,8 @@ variable "subnet_cidr_c" {
   default     = "10.10.10.64/27"
 }
 
-variable "ENVIRONMENT" {
+variable "env" {
   description = "AWS VPC Environment Name"
   type        = string
-  default     = "Development"
+  default     = "Dev"
 }
